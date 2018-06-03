@@ -51,12 +51,20 @@
         var computerLetter = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
         //Game logic
+        
+        if (lettersGuessed.indexOf(userGuess) < 0) {
+                lettersGuessed.push(userGuess);
+                
+        }
+       
 
         if (userGuess === computerLetter){
          wins++;
         alert("Good job! You win!");
         //to reset game again
         guessesLeft = 9;
+
+        //resetting the array to start a new game
         lettersGuessed.length = 0;
             
             }
@@ -64,7 +72,9 @@
             
          else if (userGuess !== computerLetter) {
          guessesLeft--;
-         lettersGuessed.push(userGuess);
+
+         //adding to the array only if letter has not been selected yet
+          
 
             }
 
@@ -74,6 +84,8 @@
          losses++   
          alert("You are out of guesses. Press any key to play again");
          guessesLeft = 9;
+
+         //resetting the array to start a new game
          lettersGuessed.length = 0;
             }
 
